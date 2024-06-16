@@ -3,12 +3,21 @@ public class Ceramic {
 	
 	private String brand;
 	private String name;
-	private int height;
-	private int width;
+	private double height;
+	private double width;
 	private Type type;
 	private int quality;
 	private int price;
 	private int realStock;
+	private double amountPerBox;
+	
+	public double getAmountPerBox() {
+		return amountPerBox;
+	}
+	
+	public void setAmountPerBox(double amount) {
+		this.amountPerBox = amount;
+	}
 	
 	public int getRealStock() {
 		return realStock;
@@ -42,19 +51,19 @@ public class Ceramic {
 		this.type = type;
 	}
 
-	public int getHeight() {
+	public double getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(double height) {
 		this.height = height;
 	}
 
-	public int getWidth() {
+	public double getWidth() {
 		return width;
 	}
 
-	public void setWidth(int width) {
+	public void setWidth(double width) {
 		this.width = width;
 	}
 
@@ -74,7 +83,7 @@ public class Ceramic {
 		this.brand=brand;
 	}
 
-	public Ceramic(String brand, String name, int height, int width, Type type, int quality, int price, int realStock) {
+	public Ceramic(String brand, String name, double height, double width, Type type, int quality, int price, int realStock, double amount) {
 		this.setBrand(brand);
 		this.setName(name);
 		this.setHeight(height);
@@ -83,7 +92,19 @@ public class Ceramic {
 		this.setQuality(quality);
 		this.setPrice(price);
 		this.setRealStock(realStock);
+		this.setAmountPerBox(amount);
 	}
-	
+
+	public Double tilesPerBox() {
+		return (this.getAmountPerBox() / (this.getHeight() * this.getWidth()));
+	}
+
+	public void addStock(int stock) {
+		this.setRealStock(this.getRealStock() + stock);
+	}
+
+	public void removeStock(int stock) {
+		this.setRealStock(this.getRealStock() - stock);	
+	}
 
 }
